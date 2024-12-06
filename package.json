@@ -3,12 +3,12 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
-  "homepage": ".",
+  "homepage": "https://maple02149.github.io/nine-sols-keyboard",
   "scripts": { 
-    "dev": "serve -p 9090 .\\dist ",
+    "dev": "serve -p 9090 .\\build",
     "start": "vite --port 9090",
-    "deploy": "json -I -f package.json -e \"this.homepage='https://maple02149.github.io/nine-sols-keyboard'\" && gh-pages -d build && json -I -f package.json -e \"this.homepage='.'\" ",
-    "build": "bun run build",
+    "deploy": "gh-pages -d build",
+    "build": "vite build ",
     "lint": "eslint .",
     "preview": "vite preview"
   },
