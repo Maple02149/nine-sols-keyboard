@@ -3,8 +3,9 @@
   src: url("./font/NineSols02.ttf")
 }
 
-:root{
+:root {
   --keyboard-font: "NineSols";
+  overflow: hidden;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -16,8 +17,16 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
+
 }
 
+
+.app-row>.ant-col {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 
 .react-simple-keyboard {
@@ -28,10 +37,6 @@
   font-family: var(--keyboard-font) !important;
 }
 
-
-
-
-/* hg-button hg-functionBtn hg-button-tab */
 a {
   font-weight: 500;
   color: #646cff;
@@ -48,6 +53,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  transform-origin: top center;
 }
 
 h1 {
@@ -76,6 +82,27 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: #213547;
+    background-color: #242424;
+  }
+
+  a:hover {
+    color: #747bff;
+  }
+
+  kbd {
+    background: rgb(236, 236, 236) !important;
+    color: "white",
+
+  }
+
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -86,7 +113,24 @@ button:focus-visible {
     color: #747bff;
   }
 
+  kbd {
+    background: rgb(236, 236, 236) !important;
+    color: "balck",
+  }
+
   button {
     background-color: #f9f9f9;
+  }
+}
+
+@media screen and (min-width: 600px) and (min-height: 600px) {
+  body {
+    transform: scale(2);
+  }
+}
+
+@media screen and (min-width: 375px) and (min-height: 375px) {
+  body {
+    transform: scale(1);
   }
 }
