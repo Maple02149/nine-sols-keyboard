@@ -5,7 +5,7 @@ import NSF_Keyboard from "./components/keyboard"
 import { decodeCangjie } from "./models"
 
 function App() {
-  const [input, setInput] = useState<string>("123")
+  const [input, setInput] = useState<string>("")
   const [zh, setZh] = useState<string | undefined>(undefined)
   const keyboard = useRef<any>(null)
 
