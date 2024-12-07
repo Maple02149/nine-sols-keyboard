@@ -57,10 +57,6 @@ export default defineConfig(({ mode }) => {
         "theme_color": "#2E2B2B",
         "description": "Nine Sols Font Keyboard"
       }
-
-      // injectManifest: {
-      //   maximumFileSizeToCacheInBytes: maximumFileSize
-      // }
     })],
     build: {
       outDir: './build',
