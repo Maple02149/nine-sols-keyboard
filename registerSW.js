@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/nine-sols-keyboard/sw.js', { scope: '/nine-sols-keyboard/' })})}
