@@ -4,19 +4,17 @@
   "version": "0.0.1",
   "type": "module",
   "homepage": "https://maple02149.github.io/nine-sols-keyboard",
-  "scripts": { 
-    "dev": "serve -p 9090 .\\build",
+  "scripts": {
     "start": "vite --port 9090",
-    "deploy": "gh-pages -d build",
-    "build": "vite build ",
-    "lint": "eslint .",
+    "serve": "serve -p 9090 .\\build",
+    "dev": "vite build --mode development && serve -p 9090 .\\build",
+    "build": "vite build --mode production",
+    "deploy": "vite build --mode production && gh-pages -d build",
     "preview": "vite preview"
   },
   "dependencies": {
     "antd": "^5.22.3",
-    "cross-env": "^7.0.3",
     "gh-pages": "^6.2.0",
-    "jq": "^1.7.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-simple-keyboard": "^3.8.27",
@@ -24,6 +22,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
+    "@types/node": "^22.10.1",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react-swc": "^3.5.0",
