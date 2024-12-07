@@ -57,7 +57,7 @@ function App() {
               }
             }
           >
-            {input.length <= 0 ? "plaze enter" : input}
+            {input.length <= 0 ? "please enter" : input}
           </Typography.Paragraph>
         </Col>
         <Col span={24} >
