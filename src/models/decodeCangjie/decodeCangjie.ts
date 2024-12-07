@@ -47,10 +47,10 @@ class DecodingCangjie {
      
         const cangjie = this.cangjieData.find((f) => { return f.value.toUpperCase() === inputValue.toUpperCase() })
         const uncode = cangjie ? this.uncode_BMP.find((f) => { return f.key === cangjie.key }) : undefined
-        console.log({  
-            cangjie,
-            uncode
-        })
+        // console.log({  
+        //     cangjie,
+        //     uncode
+        // })
         return uncode?.value ? String.fromCharCode(parseInt(uncode.value, 16)) : null
     }
 }
