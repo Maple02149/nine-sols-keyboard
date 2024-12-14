@@ -1,21 +1,18 @@
-import { Button, Col, Flex, Input, Row, Space, Typography } from "antd"
+import { Button, Col, Input, Row, Space, Typography } from "antd"
 import { useEffect, useRef, useState } from 'react'
 import './App.css'
 import NSF_Keyboard from "./components/keyboard"
-import { decodeCangjie } from "./models"
+import { initDB, findCharacter, IDBCangjie, IDBColumnNmae } from "./models/indexDB"
 
 function App() {
   const [input, setInput] = useState<string>("")
-  const [zh, setZh] = useState<string | undefined>(undefined)
+  const [zh, setZh] = useState<IDBCangjie[]>([])
+  const [isDBReady, setIsDBReady] = useState<boolean>(false)
   const keyboard = useRef<any>(null)
   const [scale, setScale] = useState(1)
-  useEffect(() => {
 
-    const f = decodeCangjie.encode(input)
-    if (f) { setZh(input) }
 
-  }, [input])
- 
+
   useEffect(() => {
     function handleResize() {
       const width = window.innerWidth
@@ -27,8 +24,7 @@ function App() {
         setScale(1)
       }
     }
-
-    handleResize() // 初始化时执行一次
+    handleResize()
 
     window.addEventListener('resize', handleResize)
 
@@ -36,6 +32,19 @@ function App() {
       window.removeEventListener('resize', handleResize)
     }
   }, [])
+  useEffect(() => {
+    (async () => {
+      const status = await initDB()
+      setIsDBReady(status)
+    })()
+  }, [])
+  useEffect(() => {
+
+    findCharacter(input.toLocaleLowerCase()).then((d) => {
+      setZh(d)
+    }).catch()
+
+  }, [input])
   return (
     <div style={
       {
@@ -87,6 +96,16 @@ function App() {
             />
           </div>
         </Col>
+        {/* <Col span={24} >
+          <Typography.Text
+            style={undefined}
+          // ellipsis={{tooltip:''  }}
+          >
+            {zh.map((z) => {
+              return z[IDBColumnNmae.Character]
+            }).join(",")}
+          </Typography.Text>
+        </Col> */}
       </Row>
     </div>
   )
