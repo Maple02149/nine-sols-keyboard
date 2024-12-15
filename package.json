@@ -18,7 +18,8 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-simple-keyboard": "^3.8.27",
-    "serve": "^14.2.4"
+    "serve": "^14.2.4",
+    "workbox-window": "^7.3.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
