@@ -15,9 +15,6 @@ function TextDisplayBox(props: IProps) {
         input_zhArr,
         input
     } = props
-    useEffect(() => {
-        console.log({ input_zhArr })
-    }, [input_zhArr])
     return (
         <>
             <Splitter style={{
