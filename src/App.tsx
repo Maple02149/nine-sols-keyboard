@@ -7,9 +7,10 @@ import './App.css'
 import NSF_Keyboard from "./components/keyboard"
 import TextDisplayBox from "./components/textDisplayBox"
 import { findCharacter, IDBCangjie, initDB } from "./models/indexDB"
+import { errorLog } from "./helper"
 function App() {
   const [input, setInput] = useState<string>("")
-  const [zh, setZh] = useState<IDBCangjie[]>([])
+  const [zhArr, setZhArr] = useState<IDBCangjie[][]>([])
   const [isDBReady, setIsDBReady] = useState<boolean>(false)
   const keyboard = useRef<any>(null)
   const [scale, setScale] = useState(1)
@@ -41,9 +42,17 @@ function App() {
   }, [])
   useEffect(() => {
 
-    findCharacter(input.toLocaleLowerCase()).then((d) => {
-      setZh(d)
-    }).catch()
+    const inputArr = input.toLocaleLowerCase().split(" ")
+    const promiseArr = inputArr.map((input) => { return findCharacter(input) })
+    Promise.all(promiseArr)
+      .then((results) => {
+        setZhArr(results)
+      })
+      .catch((err) => {
+        errorLog(App.name, err)
+        setZhArr([])
+      })
+
 
   }, [input])
   return (
@@ -57,7 +66,7 @@ function App() {
         <Col span={24} >
           <TextDisplayBox
             input={input}
-            input_zh={zh}
+            input_zhArr={zhArr}
             isDBReady={isDBReady}
           ></TextDisplayBox>
         </Col>
@@ -74,6 +83,7 @@ function App() {
                 keyboard.current.input.default = ""
               }
               setInput('')
+              setZhArr([])
             }}>
               clear
             </Button>

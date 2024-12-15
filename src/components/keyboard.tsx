@@ -67,7 +67,7 @@ function NSF_Keyboard(porps: IProps) {
                 layout={
                     {
                         default: [
-                            "` 1 2 3 4 5 6 7 8 9 0 - = {backspace}",
+                            "{space} 1 2 3 4 5 6 7 8 9 0 - = {backspace}",
                             "q w e r t y u i o p [ ] \\",
                             "{capslock} a s d f g h j k l ; '",
                             "{shiftleft} z x c v b n m , . /",
@@ -82,6 +82,7 @@ function NSF_Keyboard(porps: IProps) {
                 }
                 display={
                     {
+                        "{space}": "　",
                         "{escape}": "⎋",
                         "{backspace}": "⌫",
                         "{enter}": "↵",

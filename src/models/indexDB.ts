@@ -1,5 +1,4 @@
 
-import { promises } from "dns"
 import { cl, errorLog } from "../helper"
 
 
@@ -92,7 +91,12 @@ const findCharacter: (code: string) => Promise<IDBCangjie[]> = (code: string) =>
         const trx = db.transaction(tableName, "readonly")
         const find = trx.objectStore(tableName).index(IDBColumnNmae.Code).getAll(code)
         find.onsuccess = (e: any) => {
-            resolve(e.target.result ?? [])
+            const result: IDBCangjie[] = e.target.result
+            resolve(result.length > 0 ? result : [{
+                [IDBColumnNmae.ID]: 0,
+                [IDBColumnNmae.Character]: "❔",
+                [IDBColumnNmae.Code]: ""
+            }])
         }
         find.onerror = (err) => {
             errorLog(findCharacter.name, err)
@@ -100,4 +104,4 @@ const findCharacter: (code: string) => Promise<IDBCangjie[]> = (code: string) =>
 
     })
 }
-export {   findCharacter, initDB }
+export { findCharacter, initDB }

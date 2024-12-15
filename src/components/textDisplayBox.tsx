@@ -1,20 +1,23 @@
 import { Splitter } from "antd"
 import Typography from "antd/es/typography"
 import { IDBCangjie, IDBColumnNmae } from "../models/indexDB"
+import { useEffect } from "react"
 
 interface IProps {
     isDBReady: boolean
     input: string
-    input_zh: IDBCangjie[]
+    input_zhArr: IDBCangjie[][]
 }
 function TextDisplayBox(props: IProps) {
 
     const {
         isDBReady,
-        input_zh,
+        input_zhArr,
         input
     } = props
-
+    useEffect(() => {
+        console.log({ input_zhArr })
+    }, [input_zhArr])
     return (
         <>
             <Splitter style={{
@@ -40,7 +43,8 @@ function TextDisplayBox(props: IProps) {
                         }
                     >
                         {
-                            input_zh.length <= 0 ? "🔎🔄" : input_zh.map((i) => { return i[IDBColumnNmae.Character] }).join(",")
+                            // input_zhArr.length <= 0 ? "🔎" : input_zhArr.map((zh) => { return `${zh.map((z) => { return z[IDBColumnNmae.Character] }).join(",")}` }).join(" ") /// !has [] 
+                            input_zhArr.length <= 0 ? "🔎" : input_zhArr.map((zh) => { return `[${zh.map((z) => { return z[IDBColumnNmae.Character] }).join(",")}]` }).join(" ")
                         }
                     </Typography.Paragraph>
 
