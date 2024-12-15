@@ -20,7 +20,11 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": false,
-    "noUncheckedSideEffectImports": false
+    "noUncheckedSideEffectImports": false,
+
+    "types": [
+      "vite-plugin-pwa/client"
+    ]
   },
   "include": ["src"]
 }

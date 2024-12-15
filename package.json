@@ -10,7 +10,7 @@
     "build": "vite build  --mode production ",
     "deploy": "vite build  && gh-pages -d build",
     "serve": "serve -n -p 9090 ./build",
-    "preview": "vite preview"
+    "preview": "vite preview --mode development --host --port 9090"
   },
   "dependencies": {
     "antd": "^5.22.3",

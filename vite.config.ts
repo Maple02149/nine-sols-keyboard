@@ -15,11 +15,25 @@ export default defineConfig(({ mode }) => {
     plugins: [react(),
     VitePWA({
       registerType: 'autoUpdate',
-      injectRegister: 'script',
+      includeAssets: ["**/*"], /// update
       workbox: {
+        devOptions: {
+          enabled: true
+        },
         sourcemap: true,
-        globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
-        cleanupOutdatedCaches: false,
+        globPatterns: ["**/*"], /// catch
+        runTimeCacging: [{
+          urlPattern: ({ url }: any) => {
+            return url.pathname.startsWith("/")
+          },
+          handler: "CacheFirst",
+          oprtion: {
+            cacheName: "cangjieData",
+            cacheableResponse: {
+              statuses: [0, 200],
+            },
+          }
+        }],
         maximumFileSizeToCacheInBytes: maximumFileSize
       },
       manifest: {
