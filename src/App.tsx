@@ -9,12 +9,13 @@ import TextDisplayBox from "./components/textDisplayBox"
 import { findCharacter, IDBCangjie, initDB } from "./models/indexDB"
 import { errorLog } from "./helper"
 function App() {
-  const [input, setInput] = useState<string>("")
+  const InpubBoxKeyWord = "InpubBoxKeyWord"
+  const [input, setInput] = useState<string>(localStorage.getItem(InpubBoxKeyWord)??"")
   const [zhArr, setZhArr] = useState<IDBCangjie[][]>([])
   const [isDBReady, setIsDBReady] = useState<boolean>(false)
   const keyboard = useRef<any>(null)
   const [scale, setScale] = useState(1)
-
+ 
   useEffect(() => {
     function handleResize() {
       const width = window.innerWidth
@@ -41,7 +42,7 @@ function App() {
     })()
   }, [])
   useEffect(() => {
-
+    localStorage.setItem(InpubBoxKeyWord, input)
     const inputArr = input.toLocaleLowerCase().split(" ")
     const promiseArr = inputArr.map((input) => { return findCharacter(input) })
     Promise.all(promiseArr)
