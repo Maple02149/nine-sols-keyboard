@@ -17,23 +17,23 @@ export default defineConfig(({ mode }) => {
       registerType: 'autoUpdate',
       includeAssets: ["**/*"], /// update
       workbox: {
-        devOptions: {
-          enabled: true
-        },
+        // devOptions: {
+        //   enabled: true
+        // },
         sourcemap: true,
         globPatterns: ["**/*"], /// catch
-        runTimeCacging: [{
-          urlPattern: ({ url }: any) => {
-            return url.pathname.startsWith("/")
-          },
-          handler: "CacheFirst",
-          oprtion: {
-            cacheName: "cangjieData",
-            cacheableResponse: {
-              statuses: [0, 200],
-            },
-          }
-        }],
+        // runTimeCacging: [{
+        //   urlPattern: ({ url }: any) => {
+        //     return url.pathname.startsWith("/")
+        //   },
+        //   handler: "CacheFirst",
+        //   oprtion: {
+        //     cacheName: "cangjieData",
+        //     cacheableResponse: {
+        //       statuses: [0, 200],
+        //     },
+        //   }
+        // }],
         maximumFileSizeToCacheInBytes: maximumFileSize
       },
       manifest: {
