@@ -21,7 +21,6 @@ function TextDisplayBox(props: IProps) {
     return (
         <>
             <Splitter style={{
-                boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
                 overflow: "hidden",
                 height: "30px"
             }}>
