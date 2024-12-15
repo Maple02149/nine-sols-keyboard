@@ -1,17 +1,18 @@
-import { Button, Col, Input, Row, Space, Typography } from "antd"
+import {
+  GithubFilled
+} from '@ant-design/icons'
+import { Button, Col, FloatButton, Input, Row, Space } from "antd"
 import { useEffect, useRef, useState } from 'react'
 import './App.css'
 import NSF_Keyboard from "./components/keyboard"
-import { initDB, findCharacter, IDBCangjie, IDBColumnNmae } from "./models/indexDB"
-
+import TextDisplayBox from "./components/textDisplayBox"
+import { findCharacter, IDBCangjie, initDB } from "./models/indexDB"
 function App() {
   const [input, setInput] = useState<string>("")
   const [zh, setZh] = useState<IDBCangjie[]>([])
   const [isDBReady, setIsDBReady] = useState<boolean>(false)
   const keyboard = useRef<any>(null)
   const [scale, setScale] = useState(1)
-
-
 
   useEffect(() => {
     function handleResize() {
@@ -54,20 +55,11 @@ function App() {
     }>
       <Row className={"app-row"} gutter={[8, 12]}>
         <Col span={24} >
-          <Typography.Paragraph keyboard
-            ellipsis={{ rows: 1, }}
-            copyable={{ tooltips: false }}
-            style={
-              {
-                textAlign: "center",
-                width: "350px",
-                fontSize: "35px",
-                marginBottom: "-5px"
-              }
-            }
-          >
-            {input.length <= 0 ? "please enter" : input}
-          </Typography.Paragraph>
+          <TextDisplayBox
+            input={input}
+            input_zh={zh}
+            isDBReady={isDBReady}
+          ></TextDisplayBox>
         </Col>
         <Col span={24} >
           <Space
@@ -96,18 +88,15 @@ function App() {
             />
           </div>
         </Col>
-        {/* <Col span={24} >
-          <Typography.Text
-            style={undefined}
-          // ellipsis={{tooltip:''  }}
-          >
-            {zh.map((z) => {
-              return z[IDBColumnNmae.Character]
-            }).join(",")}
-          </Typography.Text>
-        </Col> */}
+        <Col span={24}>
+          <a style={{ marginBottom: "10px" }} href="https://github.com/Maple02149/nine-sols-keyboard" target="_blank" rel="github">
+            <GithubFilled />
+          </a>
+        </Col>
       </Row>
-    </div>
+
+
+    </div >
   )
 }
 
