@@ -39,8 +39,8 @@ function TextDisplayBox(props: IProps) {
                         }
                     >
                         {
-                            // input_zhArr.length <= 0 ? "🔎" : input_zhArr.map((zh) => { return `${zh.map((z) => { return z[IDBColumnNmae.Character] }).join(",")}` }).join(" ") /// !has [] 
-                            input_zhArr.length <= 0 ? "🔎" : input_zhArr.map((zh) => { return `[${zh.map((z) => { return z[IDBColumnNmae.Character] }).join(",")}]` }).join(" ")
+                            input_zhArr.length <= 0 ? "🔎" : input_zhArr.map((zh) => { return `${zh.map((z) => { return z[IDBColumnNmae.Character] }).join(",")}` }).join(" ") /// !has [] 
+                            // input_zhArr.length <= 0 ? "🔎" : input_zhArr.map((zh) => { return `[${zh.map((z) => { return z[IDBColumnNmae.Character] }).join(",")}]` }).join(" ")
                         }
                     </Typography.Paragraph>
 
