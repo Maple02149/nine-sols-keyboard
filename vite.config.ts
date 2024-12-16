@@ -22,18 +22,19 @@ export default defineConfig(({ mode }) => {
         // },
         sourcemap: true,
         globPatterns: ["**/*"], /// catch
-        // runTimeCacging: [{
-        //   urlPattern: ({ url }: any) => {
-        //     return url.pathname.startsWith("/")
-        //   },
-        //   handler: "CacheFirst",
-        //   oprtion: {
-        //     cacheName: "cangjieData",
-        //     cacheableResponse: {
-        //       statuses: [0, 200],
-        //     },
-        //   }
-        // }],
+        runtimeCaching: [{
+          urlPattern: ({ url } ) => {
+            return url.pathname.startsWith("/api")
+          },
+          handler: "CacheFirst" as const,
+          options: {
+            cacheName: "api-cache",
+            cacheableResponse: {
+              statuses: [0, 200]
+            }
+          }
+        }
+        ],
         maximumFileSizeToCacheInBytes: maximumFileSize
       },
       manifest: {
