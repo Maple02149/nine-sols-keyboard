@@ -13,7 +13,7 @@ registerSW({
       }, intervalMS)
   },
   immediate: true
-}) 
+})()
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />
