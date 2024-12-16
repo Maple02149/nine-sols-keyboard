@@ -65,7 +65,7 @@ export default defineConfig(({ mode }) => {
             "purpose": "maskable"
           }
         ],
-        "start_url": "/",
+        "start_url": "/nine-sols-keyboard",
         "display": "fullscreen",
         "background_color": "#2E2B2B",
         "theme_color": "#2E2B2B",
