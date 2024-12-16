@@ -14,6 +14,7 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react(),
     VitePWA({
+      strategies:"generateSW",
       registerType: 'autoUpdate',
       includeAssets: ["**/*"], /// update
       workbox: {
