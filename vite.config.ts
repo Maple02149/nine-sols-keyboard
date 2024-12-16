@@ -79,7 +79,7 @@ export default defineConfig(({ mode }) => {
       outDir: './build',
       emptyOutDir: true,
     },
-    base: env.BASE_URL ?? ".",
+    base: env.BASE_URL ?? "/nine-sols-keyboard/", /// ".",
     // vite 配置
     define: {
       __APP_ENV__: JSON.stringify(env.APP_ENV),
