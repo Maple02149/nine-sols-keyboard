@@ -21,6 +21,7 @@ export default defineConfig(({ mode }) => {
         // devOptions: {
         //   enabled: true
         // },
+        // cleanupOutdatedCaches: false,
         sourcemap: true,
         globPatterns: ["**/*"], /// catch
         runtimeCaching: [{
